@@ -6,7 +6,7 @@ import java.awt.Color
 import java.util.function.BiFunction
 import java.util.function.Predicate
 
-fun variableDeclarations(){
+fun variableDeclarations() {
     val x = 0  //val means unmodifiable
     var name = "abc" //var means modifiable
 
@@ -14,7 +14,7 @@ fun variableDeclarations(){
     name = "some other name" // this is fine
 }
 
-fun typeInterface(){
+fun typeInterface() {
     val a = "abc"                         // type inferred to String
     val b = 4                             // type inferred to Int
 
@@ -22,7 +22,7 @@ fun typeInterface(){
     val d: List<String> = ArrayList()     // type declared explicitly
 }
 
-fun commonUsage(){
+fun commonUsage() {
 
     // declaring nullable
     var canBeNullable: String? = "canBeNullable"
@@ -32,13 +32,13 @@ fun commonUsage(){
     // canNotBeNullable = null   // Compilation Error
 
     //creating a map
-    val testMap = mapOf<Int,String>(1 to "one", 2 to "two")
-    val testArrayList = arrayListOf(1,2,3,4,5)
+    val testMap = mapOf<Int, String>(1 to "one", 2 to "two")
+    val testArrayList = arrayListOf(1, 2, 3, 4, 5)
 
-    val c = if(canBeNullable == "someValue") "hello" else ""
+    val c = if (canBeNullable == "someValue") "hello" else ""
 }
 
-fun stringInterpolation(){
+fun stringInterpolation() {
     val str = "Hello"
     print("$str World")
 
@@ -47,28 +47,28 @@ fun stringInterpolation(){
     println("sum of $x and $y is ${x + y}")
 }
 
-fun equals(){
-    val personOne = PersonKotlin(1,"a")
-    val personTwo = PersonKotlin(1,"a")
+fun equals() {
+    val personOne = PersonKotlin(1, "a")
+    val personTwo = PersonKotlin(1, "a")
 
-    println("PersonOne == PersonTwo : ${personOne == personTwo}" )
-    println("PersonOne === PersonTwo : ${personOne === personTwo}" )
+    println("PersonOne == PersonTwo : ${personOne == personTwo}")
+    println("PersonOne === PersonTwo : ${personOne === personTwo}")
 
 }
 
-fun namedArguments(){
+fun namedArguments() {
     val kotlinPersonWithNamedArguments = PersonKotlin(id = 1, name = "personName")
     //val javaPersonWithnamedArguments = PersonJava(id = 1, name = "personname") // this will not work
     println("""Named Argument : Default Name function ${namedArgumentFunction()}""")
 
 }
 
-fun namedArgumentFunction(id : Int = 0, name : String = "defaultName") =  PersonKotlin(id = id, name = name)
+fun namedArgumentFunction(id: Int = 0, name: String = "defaultName") = PersonKotlin(id = id, name = name)
 
-fun whenEXpression(){
+fun whenEXpression() {
     println("""whenExpressionDemo1 : ${whenExpressionDemo1(7)}""")
 
-    val obj : String? = null
+    val obj: String? = null
 
     val res: Boolean = when {
         obj == null -> false
@@ -82,7 +82,7 @@ fun whenEXpression(){
 
 }
 
-fun whenExpressionDemo1(x : Int){
+fun whenExpressionDemo1(x: Int) {
     when (x) {
         1 -> print("x is 1")
         2 -> print("x is 2")
@@ -92,7 +92,7 @@ fun whenExpressionDemo1(x : Int){
     }
 }
 
-fun whenExpressionDemo2(color : Colors){
+fun whenExpressionDemo2(color: Colors) {
     when (color) {
         Colors.RED -> println("RED COLOR")
         Colors.GREEN -> println("GREEN COLOR")
@@ -100,27 +100,27 @@ fun whenExpressionDemo2(color : Colors){
     }
 }
 
-fun destructingDeclarations(){
+fun destructingDeclarations() {
     val numberToStringMap = mapOf(1 to "one", 2 to "two")
 
-    for ((key, value) in numberToStringMap){
+    for ((key, value) in numberToStringMap) {
         println("key:value=${key}:${value}")
     }
 
     val person = PersonKotlin(1, "one")
 
-    val (id , name) = person
+    val (id, name) = person
 }
 
 
-fun nullSafety(){
+fun nullSafety() {
     data class Somethin(
-            val x : Int?,
+            val x: Int?,
             val y: String
 
     )
 
-    val test = Somethin(x = null,y= "abc")
+    val test = Somethin(x = null, y = "abc")
 
     val c: Int = test?.x ?: 0
 
@@ -128,9 +128,9 @@ fun nullSafety(){
 
     cityName = null
 
-    var length = if(cityName != null){
-            cityName.length
-    }else{
+    var length = if (cityName != null) {
+        cityName.length
+    } else {
         0
     }
 
@@ -140,36 +140,38 @@ fun nullSafety(){
 }
 
 
-fun lambdaExample(){
+fun lambdaExample() {
 
     //BiFunction<Integer, Integer, Integer> sum = (a , b) -> a + b;  //Java way of writing lambda
-    val sum = { x : Int , y: Int -> x + y }                          //Kotlin way of writing lambda
+    val sum = { x: Int, y: Int -> x + y }                          //Kotlin way of writing lambda
 
-    val result = sum(1,2);
+    val result = sum(1, 2);
     println("Sum of Two Int : $result")
 
     /**
      * Lambda As Method Body when its the last argument
      */
 
-    performOperation(2, {it : Int -> it*2})
+    performOperation(2, { it: Int -> it * 2 })
 
     // OR
 
-    val multiplyBy2 = performOperation(2){
-        it -> it*2
+    val multiplyBy2 = performOperation(2) { it ->
+        it * 2
     }
 
     println("MultiPly By 2 : $multiplyBy2")
 
-    val divideBy5 = performOperation(25){
-        it -> it/5
+    val divideBy5 = performOperation(25) { it ->
+        it / 5
     }
 
     println("Divide By 5 : $divideBy5")
 }
 
-
-fun performOperation(number : Int , operation : (num : Int) -> Int){
-    operation.invoke(number)
+fun lambda(): (Int, Int) -> Int {
+    return { x: Int, y: Int -> x + y }
 }
+
+
+fun performOperation(number: Int, operation: (num: Int) -> Int) = operation.invoke(number)

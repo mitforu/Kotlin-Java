@@ -3,6 +3,9 @@ package com.mitesh;
 import com.mitesh.dataclass.PersonJava;
 import com.mitesh.dataclass.PersonKotlin;
 import com.mitesh.dataclass.PersonService;
+import kotlin.jvm.functions.Function2;
+
+import java.util.function.BiFunction;
 
 public class Main {
 
@@ -72,6 +75,12 @@ public class Main {
          * Lambda
          */
         com.mitesh.common.KotlinUsageKt.lambdaExample();
+        performOperation(1,2, (a , b ) -> a+b);
+        performOperation(2,3, com.mitesh.common.KotlinUsageKt.lambda());
 
+    }
+
+    static private Integer performOperation(Integer number1 , Integer number2, Function2<Integer, Integer, Integer> fn){
+        return fn.invoke(number1,number2);
     }
 }
