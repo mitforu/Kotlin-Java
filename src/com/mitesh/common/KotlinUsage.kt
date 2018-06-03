@@ -172,3 +172,13 @@ fun lambdaExample() {
 fun lambda(): (Int, Int) -> Int =  { x: Int, y: Int -> x + y }
 
 fun performOperation(number: Int, operation: (num: Int) -> Int) = operation.invoke(number)
+
+
+fun extensionFunctionExample(numbers : List<Int>){
+    val evenNumbers = numbers.evenNumbers()
+
+    println("Even Numbers : $evenNumbers")
+}
+
+fun List<Int>.evenNumbers() =  this.filter { it%2  == 0}
+

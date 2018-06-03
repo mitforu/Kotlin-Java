@@ -5,6 +5,8 @@ import com.mitesh.dataclass.PersonKotlin;
 import com.mitesh.dataclass.PersonService;
 import kotlin.jvm.functions.Function2;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String s[]) {
@@ -75,6 +77,11 @@ public class Main {
         com.mitesh.common.KotlinUsageKt.lambdaExample();
         performOperation(1,2, (a , b ) -> a+b);
         performOperation(2,3, com.mitesh.common.KotlinUsageKt.lambda());
+
+        /**
+         * Extension Functions
+         */
+        com.mitesh.common.KotlinUsageKt.extensionFunctionExample(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
 
     }
 
