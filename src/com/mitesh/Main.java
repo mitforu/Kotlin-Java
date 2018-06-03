@@ -5,8 +5,6 @@ import com.mitesh.dataclass.PersonKotlin;
 import com.mitesh.dataclass.PersonService;
 import kotlin.jvm.functions.Function2;
 
-import java.util.function.BiFunction;
-
 public class Main {
 
     public static void main(String s[]) {

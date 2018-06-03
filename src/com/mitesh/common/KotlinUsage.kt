@@ -169,9 +169,6 @@ fun lambdaExample() {
     println("Divide By 5 : $divideBy5")
 }
 
-fun lambda(): (Int, Int) -> Int {
-    return { x: Int, y: Int -> x + y }
-}
-
+fun lambda(): (Int, Int) -> Int =  { x: Int, y: Int -> x + y }
 
 fun performOperation(number: Int, operation: (num: Int) -> Int) = operation.invoke(number)
