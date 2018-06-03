@@ -1,8 +1,5 @@
 package com.mitesh.dataclass;
 
-/**
- * Created by miteshpatel on 5/31/18.
- */
 public class PersonJava {
     public Integer id;
 
